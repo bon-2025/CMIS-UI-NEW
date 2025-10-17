@@ -1,0 +1,17 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  color: black;
+  font-size: 2rem;
+}
+
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  content: '‹'; /* Left arrow */
+  color: black;
+  font-size: 2rem;
+}
+
+.carousel-control-next-icon::after {
+  content: '›'; /* Right arrow */
+}
