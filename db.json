@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "id": "5960",
+      "firstName": "aaaa",
+      "lastName": "aaaa",
+      "gender": "Male",
+      "region": "aaaa",
+      "province": "aaa",
+      "municipal": "aaa",
+      "barangay": "aa",
+      "contactName": "aaa",
+      "contactAddress": "aaaa",
+      "contactPhone": "aaa",
+      "contactEmail": "a@gmail.com",
+      "burialPermitNumber": "111111",
+      "contractStart": "2025-10-28",
+      "contractEnd": "2025-10-29"
+    },
+    {
+      "id": "c48a",
+      "firstName": "aaaa",
+      "lastName": "aaaa",
+      "gender": "Male",
+      "region": "aaaa",
+      "province": "aaa",
+      "municipal": "aaa",
+      "barangay": "aa",
+      "contactName": "aaa",
+      "contactAddress": "aaaa",
+      "contactPhone": "aaa",
+      "contactEmail": "a@gmail.com",
+      "burialPermitNumber": "111111",
+      "contractStart": "2025-10-28",
+      "contractEnd": "2025-10-29"
+    },
+    {
+      "id": "9743",
+      "firstName": "aaaa",
+      "lastName": "aaaa",
+      "gender": "Other",
+      "region": "aaaa",
+      "province": "aaa",
+      "municipal": "aaa",
+      "barangay": "aa",
+      "contactName": "aaa",
+      "contactAddress": "aaaa",
+      "contactPhone": "aaa",
+      "contactEmail": "a@gmail.com",
+      "burialPermitNumber": "111111",
+      "contractStart": "2025-10-28",
+      "contractEnd": "2025-10-29"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-import { FaHome, FaUser, FaCog, FaQuestionCircle, FaBars } from 'react-icons/fa';
+import { FaHome, FaUser, FaUserPlus, FaCog, FaFileAlt, FaBars } from 'react-icons/fa';
+
 import { FaUniversity } from 'react-icons/fa';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -7,8 +8,8 @@ import './SideBar.css';
 
 const menuItems = [
   { name: 'Dashboard', icon: <FaHome />, path: '/dashboard/' },
-  { name: 'Records', icon: <FaUser />, path: '/dashboard/records' },
-  { name: 'Register', icon: <FaCog />, path: '/dashboard/register' },
+  { name: 'Records', icon: <FaFileAlt />, path: '/dashboard/records' },
+  { name: 'Register', icon: <FaUserPlus />, path: '/dashboard/register' },
 ];
 
 const SideBar = () => {

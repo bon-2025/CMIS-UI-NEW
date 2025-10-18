@@ -1,7 +1,5 @@
 import ChartDashboard from '../../components/ChartDashboard';
 
-import React from 'react';
-
 const Home = () => {
     const sampleData = [
         { id: 1, status: 'renewed', date: '2012-11-05' },
