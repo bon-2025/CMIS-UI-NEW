@@ -3,6 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Card, Form } from 'react-bootstrap';
 
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const formatDate = (dateStr, granularity) => {
@@ -23,8 +24,7 @@ const formatDate = (dateStr, granularity) => {
       return null;
   }
 };
-
-const PieChart = ({ data = [] }) => {
+const StatusChart = ({data}) => {
   const [granularity, setGranularity] = useState('month');
   const [selectedGroup, setSelectedGroup] = useState(null);
 
@@ -147,7 +147,6 @@ const PieChart = ({ data = [] }) => {
         </Card.Body>
     </Card>
     );
+}
 
-};
-
-export default PieChart;
+export default StatusChart;

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -32,7 +32,7 @@ const formatDate = (dateStr, granularity) => {
   }
 };
 
-const RenewedBarChart = ({ data = [] }) => {
+const RenewedChart = ({ data = [] }) => {
   const [granularity, setGranularity] = useState('month');
 
   const { labels, counts } = useMemo(() => {
@@ -146,4 +146,4 @@ const RenewedBarChart = ({ data = [] }) => {
   );
 };
 
-export default RenewedBarChart;
+export default RenewedChart;

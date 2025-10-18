@@ -1,6 +1,6 @@
-import ChartContainer from "../../dashboard/components/ChartContainer";
+import ChartContainer from "../components/ChartContainer";
 
-const Home = () => {
+const Home = ({records}) => {
     const sampleData = [
         { id: 1, status: 'renewed', date: '2012-11-05' },
         { id: 2, status: 'expired', date: '2019-06-20' },

@@ -1,0 +1,201 @@
+    // <Container
+    //   className="my-0 p-4 border rounded shadow-sm"
+    //   style={{
+    //     maxWidth: '900px',
+    //     width: '100%',
+    //     height: '650px',
+    //     backgroundColor: 'white',
+    //     overflowY: 'auto',
+    //   }}
+    // >
+    //   <h2 className="mb-4 text-center">Registration Form</h2>
+    //   <Form onSubmit={handleSubmit}>
+    //     <Row className="mb-3">
+    //       <Form.Group as={Col} md={6} controlId="firstName">
+    //         <Form.Label>First Name</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="firstName"
+    //           placeholder="Enter first name"
+    //           value={formData.firstName}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+
+    //       <Form.Group as={Col} md={6} controlId="lastName">
+    //         <Form.Label>Last Name</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="lastName"
+    //           placeholder="Enter last name"
+    //           value={formData.lastName}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+    //     </Row>
+
+    //     <Form.Group className="mb-3" controlId="gender">
+    //       <Form.Label>Gender</Form.Label>
+    //       <Form.Select
+    //         required
+    //         name="gender"
+    //         value={formData.gender}
+    //         onChange={handleChange}
+    //       >
+    //         <option value="" disabled>Select gender</option>
+    //         <option value="Male">Male</option>
+    //         <option value="Female">Female</option>
+    //         <option value="Other">Other</option>
+    //       </Form.Select>
+    //     </Form.Group>
+
+    //     <Row className="mb-3">
+    //       <Form.Group as={Col} md={6} controlId="region">
+    //         <Form.Label>Region</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="region"
+    //           placeholder="Region"
+    //           value={formData.region}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+
+    //       <Form.Group as={Col} md={6} controlId="province">
+    //         <Form.Label>Province</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="province"
+    //           placeholder="Province"
+    //           value={formData.province}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+    //     </Row>
+
+    //     <Row className="mb-3">
+    //       <Form.Group as={Col} md={6} controlId="municipal">
+    //         <Form.Label>Municipal</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="municipal"
+    //           placeholder="Municipal"
+    //           value={formData.municipal}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+
+    //       <Form.Group as={Col} md={6} controlId="barangay">
+    //         <Form.Label>Barangay</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="text"
+    //           name="barangay"
+    //           placeholder="Barangay"
+    //           value={formData.barangay}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+    //     </Row>
+
+    //     <h5 className="mt-4 mb-3">Contact Person Details</h5>
+
+    //     <Form.Group className="mb-3" controlId="contactName">
+    //       <Form.Label>Name</Form.Label>
+    //       <Form.Control
+    //         required
+    //         type="text"
+    //         name="contactName"
+    //         placeholder="Contact person's name"
+    //         value={formData.contactName}
+    //         onChange={handleChange}
+    //       />
+    //     </Form.Group>
+
+    //     <Form.Group className="mb-3" controlId="contactAddress">
+    //       <Form.Label>Address</Form.Label>
+    //       <Form.Control
+    //         required
+    //         type="text"
+    //         name="contactAddress"
+    //         placeholder="Contact person's address"
+    //         value={formData.contactAddress}
+    //         onChange={handleChange}
+    //       />
+    //     </Form.Group>
+
+    //     <Row className="mb-3">
+    //       <Form.Group as={Col} md={6} controlId="contactPhone">
+    //         <Form.Label>Phone Number</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="tel"
+    //           name="contactPhone"
+    //           placeholder="Contact phone number"
+    //           value={formData.contactPhone}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+
+    //       <Form.Group as={Col} md={6} controlId="contactEmail">
+    //         <Form.Label>Email</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="email"
+    //           name="contactEmail"
+    //           placeholder="Contact email"
+    //           value={formData.contactEmail}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+    //     </Row>
+
+    //     <Form.Group className="mb-3" controlId="burialPermitNumber">
+    //       <Form.Label>Burial Permit Number</Form.Label>
+    //       <Form.Control
+    //         required
+    //         type="text"
+    //         name="burialPermitNumber"
+    //         placeholder="Enter burial permit number"
+    //         value={formData.burialPermitNumber}
+    //         onChange={handleChange}
+    //       />
+    //     </Form.Group>
+
+    //     <Row className="mb-4">
+    //       <Form.Group as={Col} md={6} controlId="contractStart">
+    //         <Form.Label>Contract Start Date</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="date"
+    //           name="contractStart"
+    //           value={formData.contractStart}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+
+    //       <Form.Group as={Col} md={6} controlId="contractEnd">
+    //         <Form.Label>Contract End Date</Form.Label>
+    //         <Form.Control
+    //           required
+    //           type="date"
+    //           name="contractEnd"
+    //           value={formData.contractEnd}
+    //           onChange={handleChange}
+    //         />
+    //       </Form.Group>
+    //     </Row>
+
+    //     <div className="d-grid">
+    //       <Button variant="primary" type="submit" size="lg">
+    //         Register
+    //       </Button>
+    //     </div>
+    //   </Form>
+    //   <ToastContainer position="top-center" autoClose={2000} />
+    // </Container>

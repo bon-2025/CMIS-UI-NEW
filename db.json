@@ -51,5 +51,11 @@
       "contractStart": "2025-10-28",
       "contractEnd": "2025-10-29"
     }
-  ]
+  ],
+  "API_ADSRESS": {
+    "Region": "https://psgc.gitlab.io/api/regions",
+    "Province": "https://psgc.gitlab.io/api/provinces?regionCode=",
+    "Municipal":"https://psgc.gitlab.io/api/cities?provinceCode=",
+    "Barangay": "https://psgc.gitlab.io/api/barangays?cityCode="
+  }
 }

@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
+import { Container, Card, Form } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -8,7 +9,6 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Container, Card, Form } from 'react-bootstrap';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -31,8 +31,8 @@ const formatDate = (dateStr, granularity) => {
   }
 };
 
-const ExpiredBarChart = ({ data = [] }) => {
-  const [granularity, setGranularity] = useState('month');
+const ExpiredChart = ({data}) => {
+const [granularity, setGranularity] = useState('month');
 
   const { labels, counts } = useMemo(() => {
     const grouped = {};
@@ -143,6 +143,6 @@ const ExpiredBarChart = ({ data = [] }) => {
       </Card>
     </Container>
   );
-};
+}
 
-export default ExpiredBarChart;
+export default ExpiredChart;
