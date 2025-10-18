@@ -1,0 +1,5 @@
+open 3 dots malpit sa run then /terminal/new terminal 
+
+#type .\run.cmd
+
+then navigate http://localhost:5173/
