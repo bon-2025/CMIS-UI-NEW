@@ -1,6 +1,22 @@
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useCallback } from 'react';
+
+export const register = async (data) => {
+  try {
+      const response = await axios.post("https://your-api.com/users", 
+        { data });
+
+        return "User created successfully!" + response.data;
+        
+    } catch (error) {
+      return "Failed to submit. Please try again.";
+    } finally {
+      return false;
+    }
+}
+
 
 export const navigate = () => useNavigate(); 
 
