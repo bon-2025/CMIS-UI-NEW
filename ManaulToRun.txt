@@ -1,4 +1,4 @@
-open 3 dots malpit sa run then /terminal/new terminal 
+open 3 dots malpit sa view then /terminal/new terminal 
 
 #type .\run.cmd
 

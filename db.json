@@ -1,174 +1,214 @@
 {
   "records": [
     {
-      "id": "5960",
-      "firstName": "aaaa",
-      "lastName": "aaaa",
-      "gender": "Male",
-      "region": "aaaa",
-      "province": "aaa",
-      "municipal": "aaa",
-      "barangay": "aa",
-      "contactName": "aaa",
-      "contactAddress": "aaaa",
-      "contactPhone": "aaa",
-      "contactEmail": "a@gmail.com",
-      "burialPermitNumber": "111111",
-      "contractStart": "2025-10-28",
-      "contractEnd": "2025-10-29"
-    },
-    {
-      "id": "c48a",
-      "firstName": "aaaa",
-      "lastName": "aaaa",
-      "gender": "Male",
-      "region": "aaaa",
-      "province": "aaa",
-      "municipal": "aaa",
-      "barangay": "aa",
-      "contactName": "aaa",
-      "contactAddress": "aaaa",
-      "contactPhone": "aaa",
-      "contactEmail": "a@gmail.com",
-      "burialPermitNumber": "111111",
-      "contractStart": "2025-10-28",
-      "contractEnd": "2025-10-29"
-    },
-    {
-      "id": "9743",
-      "firstName": "aaaa",
-      "lastName": "aaaa",
-      "gender": "Other",
-      "region": "aaaa",
-      "province": "aaa",
-      "municipal": "aaa",
-      "barangay": "aa",
-      "contactName": "aaa",
-      "contactAddress": "aaaa",
-      "contactPhone": "aaa",
-      "contactEmail": "a@gmail.com",
-      "burialPermitNumber": "111111",
-      "contractStart": "2025-10-28",
-      "contractEnd": "2025-10-29"
-    },
-    {
-      "id": "35e5",
+      "id": "85ab",
       "information": {
         "descendants": {
           "firstName": "aaaa",
           "lastName": "aaaa",
-          "gender": "Male",
-          "isDetailsFormValid": true
+          "gender": "Other"
         },
         "address": {
-          "region": "aaaa",
-          "province": "aaa",
-          "municipal": "aaa",
-          "barangay": "aa",
-          "isAddressFormValid": true
+          "regionCode": "070000000",
+          "provinceCode": "072200000",
+          "municipalityCode": "072202000",
+          "barangayCode": "072202001"
         }
       },
       "contact": {
         "contactPerson": {
-          "firstName": "a",
-          "lastName": "a",
-          "gender": "Female",
-          "isDetailsFormValid": true
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Female"
         },
         "address": {
-          "region": "a",
-          "province": "a",
-          "municipal": "a",
-          "barangay": "a",
-          "isAddressFormValid": true
+          "regionCode": "030000000",
+          "provinceCode": "030800000",
+          "municipalityCode": "030802000",
+          "barangayCode": "030802002"
         }
       },
       "other": {
         "burialNumber": "111111",
-        "contractStart": "2025-10-30",
-        "contractEnd": "2025-10-29",
-        "isuseOtherInfoValid": true
+        "contractStart": "2025-10-08",
+        "contractEnd": "2025-10-16"
       }
     },
     {
-      "id": "ef18",
+      "id": "5ba0",
       "information": {
         "descendants": {
           "firstName": "aaaa",
           "lastName": "aaaa",
-          "gender": "Male",
-          "isDetailsFormValid": true
+          "gender": "Male"
         },
         "address": {
-          "region": "aaaa",
-          "province": "aaa",
-          "municipal": "aaa",
-          "barangay": "aa",
-          "isAddressFormValid": true
+          "regionCode": "070000000",
+          "provinceCode": "072200000",
+          "municipalityCode": "072202000",
+          "barangayCode": "072202002"
         }
       },
       "contact": {
         "contactPerson": {
-          "firstName": "a",
-          "lastName": "a",
-          "gender": "Female",
-          "isDetailsFormValid": true
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Male"
         },
         "address": {
-          "region": "a",
-          "province": "a",
-          "municipal": "a",
-          "barangay": "a",
-          "isAddressFormValid": true
+          "regionCode": "030000000",
+          "provinceCode": "031400000",
+          "municipalityCode": "031403000",
+          "barangayCode": "031403003"
         }
       },
       "other": {
         "burialNumber": "111111",
-        "contractStart": "2025-10-30",
-        "contractEnd": "2025-10-29",
-        "isuseOtherInfoValid": true
+        "contractStart": "2025-10-08",
+        "contractEnd": "2025-10-16"
       }
     },
     {
-      "id": "b7ee",
+      "id": "21c4",
       "information": {
         "descendants": {
           "firstName": "aaaa",
-          "lastName": "aaaa",
-          "gender": "Other",
-          "isDetailsFormValid": true
+          "lastName": "bbbb",
+          "gender": "Other"
         },
         "address": {
-          "region": "aaaa",
-          "province": "aaa",
-          "municipal": "aaa",
-          "barangay": "aa",
-          "isAddressFormValid": true
+          "regionCode": "070000000",
+          "provinceCode": "072200000",
+          "municipalityCode": "072203000",
+          "barangayCode": "072203003"
         }
       },
       "contact": {
         "contactPerson": {
-          "firstName": "a",
-          "lastName": "a",
-          "gender": "Other",
-          "isDetailsFormValid": true
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Male"
         },
         "address": {
-          "region": "a",
-          "province": "a",
-          "municipal": "a",
-          "barangay": "a",
-          "isAddressFormValid": true
+          "regionCode": "080000000",
+          "provinceCode": "083700000",
+          "municipalityCode": "083705000",
+          "barangayCode": "083705005"
         }
       },
       "other": {
         "burialNumber": "111111",
-        "contractStart": "2025-10-30",
-        "contractEnd": "2025-10-29",
-        "isuseOtherInfoValid": true
+        "contractStart": "2025-10-08",
+        "contractEnd": "2025-10-16"
+      }
+    },
+    {
+      "id": "ace9",
+      "information": {
+        "descendants": {
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Female"
+        },
+        "address": {
+          "regionCode": "070000000",
+          "provinceCode": "071200000",
+          "municipalityCode": "071210000",
+          "barangayCode": "071210001"
+        }
+      },
+      "contact": {
+        "contactPerson": {
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Male"
+        },
+        "address": {
+          "regionCode": "080000000",
+          "provinceCode": "083700000",
+          "municipalityCode": "083701000",
+          "barangayCode": "083701010"
+        }
+      },
+      "other": {
+        "burialNumber": "111111",
+        "contractStart": "2025-10-08",
+        "contractEnd": "2025-10-16"
+      }
+    },
+    {
+      "id": "5062",
+      "information": {
+        "descendants": {
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Female"
+        },
+        "address": {
+          "regionCode": "070000000",
+          "provinceCode": "072200000",
+          "municipalityCode": "072204000",
+          "barangayCode": "072204003"
+        }
+      },
+      "contact": {
+        "contactPerson": {
+          "firstName": "aaaa",
+          "lastName": "aaaa",
+          "gender": "Female"
+        },
+        "address": {
+          "regionCode": "080000000",
+          "provinceCode": "084800000",
+          "municipalityCode": "084803000",
+          "barangayCode": "084803003"
+        }
+      },
+      "other": {
+        "burialNumber": "111111",
+        "contractStart": "2025-10-08",
+        "contractEnd": "2025-10-16"
       }
     }
   ],
+"data": [
+  {
+    "id": 1,
+    "firstName": "Juan",
+    "lastName": "Dela Cruz",
+    "contractStart": "2023-01-01",
+    "contractEnd": "2024-10-25",
+    "status": "expired",
+    "createdDate": "2023-12-01"
+  },
+  {
+    "id": 2,
+    "firstName": "Maria",
+    "lastName": "Santos",
+    "contractStart": "2023-05-10",
+    "contractEnd": "2025-01-15",
+    "status": "renewed",
+    "createdDate": "2024-04-15"
+  },
+  {
+    "id": 3,
+    "firstName": "Jose",
+    "lastName": "Rizal",
+    "contractStart": "2022-09-01",
+    "contractEnd": "2023-09-30",
+    "status": "expired",
+    "createdDate": "2023-10-01"
+  },
+  {
+    "id": 4,
+    "firstName": "Ana",
+    "lastName": "Lopez",
+    "contractStart": "2023-12-01",
+    "contractEnd": "2024-11-15",
+    "status": "expiring",
+    "createdDate": "2024-01-20"
+  }
+],
   "API_ADSRESS": {
     "Region": "https://psgc.gitlab.io/api/regions",
     "Province": "https://psgc.gitlab.io/api/provinces?regionCode=",
