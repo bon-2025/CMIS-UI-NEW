@@ -1,11 +1,5 @@
-export const useRegisterValidation = ({
-  descendants,
-  descendantsAddress,
-  contactPerson,
-  contactAddress,
-  otherInformation
-}) => {
-  
+// in useRegisterValidation.js (or wherever)
+export const validateRegistration = ({ descendants, descendantsAddress, contactPerson, contactAddress, otherInformation }) => {
   const isFilled = (...values) => values.every(val => val && val.trim().length > 0);
 
   const isValid = isFilled(

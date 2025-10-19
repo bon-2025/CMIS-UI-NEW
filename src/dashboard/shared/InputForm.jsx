@@ -1,17 +1,21 @@
-import { Form, Col } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
-const InputForm = ({label, name, placeholder, value, onChange, controlId, type}) => {
+const InputForm = ({ label, name, register, errors, required, type, placeholder, rules = {}, ...rest }) => {
     return (
-        <Form.Group as={Col} md={6} controlId={ controlId }>
-            <Form.Label>{ label }</Form.Label>
+        <Form.Group className="mb-3" controlId={name}>
+            {label && <Form.Label>{label}</Form.Label>}
+
             <Form.Control
-                required
                 type={type}
-                name={name}
                 placeholder={placeholder}
-                value={value}
-                onChange={onChange}
+                {...register(name, { required, ...rules })}
+                isInvalid={!!errors[name]}
+                {...rest}
             />
+
+            <Form.Control.Feedback type="invalid">
+                {errors[name]?.message || (required && 'This field is required')}
+            </Form.Control.Feedback>
         </Form.Group>
     );
 }
