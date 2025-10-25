@@ -10,11 +10,10 @@ import Header from './components/Header';
 const API_URL = 'http://localhost:5000/records';
 
 const Dashboard = () => {
-  // const [collapsed, setCollapsed] = useState(false);
-  const[a,b] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   const [records, setRecords] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   
     useEffect(() => {
       let isMounted = true;
@@ -65,10 +64,10 @@ const Dashboard = () => {
   
     return (
         <div className="d-flex vh-100">
-            <SideBar handle={a}/>
+            <SideBar handle={collapsed}/>
 
             <div className="flex-grow-1 p-0" style={{ backgroundColor: '#e6f0fa' }}>
-              <Header handleChange={()=>{ b(!a)}}/>
+              <Header handleChange={()=>{ setCollapsed(!collapsed)}}/>
 
               <Routes>
                 <Route path="/" element={<Home records={records}/>} />

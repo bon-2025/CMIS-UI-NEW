@@ -1,112 +1,234 @@
-import { useState } from 'react';
-import RegisterForm from "../components/RegisterForm";
-import {Alert } from 'react-bootstrap';
-import { useRegisterForm } from "../hook/useRegisterForm";
-import { useRegisterValidation } from "../hook/useRegisterValidation";
-import { SubmitRegistration } from "../service/SubmitRegistration";
-import Address from '../components/Address';
-import FormModals from '../components/FormModals';
-import SubmitButton from "../components/SubmitButton";
-import OtherInformationForm from "../components/OtherInformationForm";
-import ContactPersonForm from "../components/ContactPersonForm";
-import DescendantInfoForm from '../components/DescendantInfoForm';
+import { useState, useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { addressSchema } from "../schemas/adressSchema";  // This can be TS or JS file, no impact here
+import { PhilippineAddressDropdownMUI } from "../components/AddressForm";
+import {
+  Typography,
+  Button,
+  Box,
+  Grid,
+  TextField,
+  MenuItem
+} from "@mui/material";
 
+export default function CustomFormMUI() {
 
-const Register = () => {
-  const { descendantsAddress, contactAddress, descendants, setDescendants,
-          contactPerson, setContactPerson, otherInformation,
-          setOtherInformation } = useRegisterForm();
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(null);
-  const [showValidationModal, setShowValidationModal] = useState(false);
-
-
-  const isValid = useRegisterValidation({
-    descendants,
-    descendantsAddress,
-    contactPerson,
-    contactAddress,
-    otherInformation
+  const {
+    control,
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(addressSchema),
+    defaultValues: {
+      region: "",
+      province: "",
+      municipality: "",
+      barangay: "",
+      contactRegion: "",
+      contactProvince: "",
+      contactMunicipality: "",
+      contactBarangay: "",
+      userFirstName: "",
+      userLastName: "",
+      userGender: "",
+      contactFirstName: "",
+      contactLastName: "",
+      contactGender: "",
+      burialPermitNumber: "",
+      contractStart: "",
+      contractEnd: "",
+    },
   });
 
-  const handleSubmit = () => {
-    if (!isValid) {
-      setShowValidationModal(true);
-      return;
-    }
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    alert(data)
+  };
 
-    const extractSelectedAddress = (addressState) => {
-      return {
-        regionCode: addressState.regionCode,
-        provinceCode: addressState.provinceCode,
-        municipalityCode: addressState.municipalityCode,
-        barangayCode: addressState.barangayCode,
-      };
-    };
-
-    const data = {
-      information: {
-        descendants,
-        address: extractSelectedAddress(descendantsAddress)
-      },
-      contact: {
-        contactPerson,
-        address: extractSelectedAddress(contactAddress)
-      },
-      other: otherInformation
-    };
-
-    SubmitRegistration(data, setSubmitSuccess, setSubmitSuccess, setIsSubmitting);
+  const onError = (errors) => {
+    console.log("Validation errors:", errors);
   };
 
   return (
-    <>
-      <RegisterForm header={"Registration Form"} handleSubmit={handleSubmit}>
-        {submitSuccess === true && <Alert variant="success">Registration successful!</Alert>}
-        {submitSuccess === false && <Alert variant="danger">Submission failed. Try again.</Alert>}
+    <div className="container my-4">
+      <div
+        className="bg-white p-4 shadow rounded"
+        style={{
+          width: "900px",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          margin: "0 auto",
+        }}
+      >
+        <Typography variant="h5" className="mb-3">
+          Edit Address Form
+        </Typography>
 
-        {/* 1. Descendant Info */}
-        <DescendantInfoForm
-        descendants={descendants}
-        setDescendants={setDescendants}/>
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
+          {/* USER INFO */}
+          <Typography variant="h6" className="mt-4">
+            User Information
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="First Name"
+                fullWidth
+                {...register("userFirstName")}
+                error={!!errors.userFirstName}
+                helperText={errors.userFirstName?.message}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Last Name"
+                fullWidth
+                {...register("userLastName")}
+                error={!!errors.userLastName}
+                helperText={errors.userLastName?.message}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Controller
+                defaultValue=""
+                name="userGender"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    select
+                    label="Gender"
+                    fullWidth
+                    error={!!errors.userGender}
+                    helperText={errors.userGender?.message}
+                    sx={{ width: 100 }}
+                  >
+                    <MenuItem value="">Select Gender</MenuItem>
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </TextField>
+                )}
+              />
+            </Grid>
+          </Grid>
 
+          {/* USER ADDRESS */}
+          <Typography variant="h6" className="mt-4">
+            User Address
+          </Typography>
+          <PhilippineAddressDropdownMUI
+            register={register}
+            setValue={setValue}
+            watch={watch}
+            errors={errors}
+            namePrefix="userAddress"  // or "contact" for contact address
+          />
 
-        {/* 2. Descendant Address */}
-        <h4 className="mt-3">Address</h4>
-        <Address addressState={descendantsAddress} labelPrefix="descendants_" />
+          {/* CONTACT PERSON */}
+          <Typography variant="h6" className="mt-4">
+            Contact Person Information
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Contact First Name"
+                fullWidth
+                {...register("contactFirstName")}
+                error={!!errors.contactFirstName}
+                helperText={errors.contactFirstName?.message}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Contact Last Name"
+                fullWidth
+                {...register("contactLastName")}
+                error={!!errors.contactLastName}
+                helperText={errors.contactLastName?.message}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Controller
+                defaultValue=""
+                name="contactGender"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    select
+                    label="Contact Gender"
+                    fullWidth
+                    error={!!errors.contactGender}
+                    helperText={errors.contactGender?.message}
+                    sx={{ width: 100 }}
+                  >
+                    <MenuItem value="">Select Gender</MenuItem>
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </TextField>
+                )}
+              />
+            </Grid>
+          </Grid>
 
-        {/* 3. Contact Person */}
-        <ContactPersonForm
-        contactPerson={contactPerson}
-        setContactPerson={setContactPerson}
-        />
+          {/* CONTACT ADDRESS */}
+          <Typography variant="h6" className="mt-4">
+            Contact Address
+          </Typography>
+          <PhilippineAddressDropdownMUI
+            register={register}
+            setValue={setValue}
+            watch={watch}
+            errors={errors}
+            namePrefix="contactAddress"
+          />
 
+          {/* OTHER INFO */}
+          <Typography variant="h6" className="mt-4">
+            Other Information
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                label="Burial Permit Number"
+                fullWidth
+                {...register("burialPermitNumber")}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Contract Start"
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                {...register("contractStart")}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Contract End"
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                {...register("contractEnd")}
+              />
+            </Grid>
+          </Grid>
 
-        {/* 4. Contact Address */}
-        <h4 className="mt-3">Contact Address</h4>
-        <Address addressState={contactAddress} labelPrefix="contact_" />
-
-        {/* 5. Other Info */}
-        <h4 className="mt-3">Other Information</h4>
-        <OtherInformationForm
-        otherInformation={otherInformation}
-        setOtherInformation={setOtherInformation}
-        />
-
-        <SubmitButton
-            isSubmitting={isSubmitting}
-            onClick={handleSubmit}
-            disabled={isSubmitting} 
-        />
-      </RegisterForm>
-
-        <FormModals isSubmitting={isSubmitting}
-            showValidationModal={showValidationModal}
-            setShowValidationModal={setShowValidationModal}
-        />
-    </>
+          {/* SUBMIT */}
+          <Box mt={4}>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Submit
+            </Button>
+          </Box>
+        </form>
+      </div>
+    </div>
   );
-};
-
-export default Register;
+}
