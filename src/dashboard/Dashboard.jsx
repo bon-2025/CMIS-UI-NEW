@@ -4,10 +4,15 @@ import SideBar from './components/SideBar';
 import Home from './pages/Home';
 import Records from './pages/Records';
 import Register from './pages/register';
+import Header from './components/Header';
+
 
 const API_URL = 'http://localhost:5000/records';
 
 const Dashboard = () => {
+  // const [collapsed, setCollapsed] = useState(false);
+  const[a,b] = useState(false);
+
   const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
   
@@ -56,10 +61,15 @@ const Dashboard = () => {
     if (loading) {
       return <div className="text-center p-5">Loading records...</div>;
     }
+
+  
     return (
         <div className="d-flex vh-100">
-            <SideBar />
-            <div className="flex-grow-1 p-3" style={{ backgroundColor: '#e6f0fa' }}>
+            <SideBar handle={a}/>
+
+            <div className="flex-grow-1 p-0" style={{ backgroundColor: '#e6f0fa' }}>
+              <Header handleChange={()=>{ b(!a)}}/>
+
               <Routes>
                 <Route path="/" element={<Home records={records}/>} />
                 <Route path="/Records" element={<Records  records={records}/>} />

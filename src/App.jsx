@@ -1,16 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './dashboard/Dashboard.jsx';
-
 import Login from  './pages/Login.jsx';
+import Sidebar from './components/Sidebars.jsx';
 
 function App() {
   return (
-    <Router>
+    <div className="flex">
+      <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
-    </Router>
+      </Router>
+    </div>
   )
 }
 

@@ -13,8 +13,26 @@ const Home = ({records}) => {
         { id: 9, status: 'expired', date: '2016-06-30' },
     ];
     return (
-        <ChartContainer statusData={sampleData} renewedData={sampleData} expiringData={sampleData} expiredData={sampleData}/>
+        // <ChartContainer statusData={sampleData} renewedData={sampleData} expiringData={sampleData} expiredData={sampleData}/>
+        <div className="d-flex fluid p-1 m-4 bg-danger justify-center">
+            <div className="d-flex gap-4 bg-success w-100 align-items-center justify-content-center">
+                <div className="bg-primary p-3 d-flex" style={{width: "300px", height: "150px"}}>
+                    <h1>Total User</h1>
+                </div>
+                <div className="bg-primary p-3" style={{width: "300px", height: "150px"}}>
+                    <h1>Total Renewable</h1>
+                </div>
+                <div className="bg-primary p-3" style={{width: "300px", height: "150px"}}>
+                    <h1>Total Expiring</h1>
+                </div>
+                <div className="bg-primary p-3" style={{width: "300px", height: "150px"}}>
+                    <h1>Total Expired</h1>
+                </div>
+            </div>
+        </div>
+
+
     );
 }
 
-export default Home;
+export default Home

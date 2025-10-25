@@ -1,7 +1,4 @@
 import { FaHome, FaUser, FaUserPlus, FaCog, FaFileAlt, FaBars } from 'react-icons/fa';
-
-import { FaUniversity } from 'react-icons/fa';
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import '../style/SideBar.css';
@@ -12,34 +9,20 @@ const menuItems = [
   { name: 'Register', icon: <FaUserPlus />, path: '/dashboard/register' },
 ];
 
-const SideBar = () => {
-    const [collapsed, setCollapsed] = useState(false);
+const SideBar = ({handle}) => {
 
     return (
-    <div className={`d-flex flex-column text-white overflow-hidden bg-primary bg-opacity-75`}
+        
+    <div className={`d-flex flex-column overflow-hidden bg-dark text-light`}
         style={{
-            width: collapsed ? '60px' : '240px',
+            width: handle ? '0px' : '240px',
             transition: 'width 0.3s',
             }}>
-
-        {/* Toggle Button */}
-        <div
-            className={`sidebar-toggle p-3 d-flex ${collapsed ? 'justify-content-center' : 'justify-content-end'}`}
-            style={{ cursor: 'pointer' }}
-            onClick={() => setCollapsed(!collapsed)}
-            title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            >
-            <FaBars size={24} />
-        </div>
-
-        {/* Sidebar Title with Icon */}
-        <div className={`px-3 mb-3 d-flex align-items-center ${collapsed ? 'justify-content-center' : ''}`}>
-            <FaUniversity size={24} className="me-2" />
-            {!collapsed && (
-            <h5 className="m-0 fw-bold" style={{ fontSize: '1.25rem' }}>
-                CMIS
+        
+        <div className="p-3 border-bottom border-secondary">
+            <h5 className="fw-bold text-white mb-0">
+            <span className="text-secondary">CMIS</span><span className="text-info">Main title</span>
             </h5>
-            )}
         </div>
 
         {/* Menu Items */}
@@ -59,14 +42,20 @@ const SideBar = () => {
                 textOverflow: 'ellipsis',
                 color: 'inherit',
                 }}
-                title={collapsed ? name : ''}
+                title={handle ? name : ''}
             >
-                <span style={{ marginRight: collapsed ? 0 : 12, fontSize: 20 }}>
+                <span style={{ marginRight: handle ? 0 : 12, fontSize: 20 }}>
                 {icon}
                 </span>
-                {!collapsed && <span>{name}</span>}
+                {!handle && <span>{name}</span>}
             </Nav.Link>
             ))}
+            <Nav.Link>
+                <select name="" id="">
+                    <option value="">1</option>
+                    <option value="">1</option>
+                </select>
+            </Nav.Link>
         </Nav>
     </div>
     );

@@ -209,10 +209,11 @@
     "createdDate": "2024-01-20"
   }
 ],
-  "API_ADSRESS": {
-    "Region": "https://psgc.gitlab.io/api/regions",
-    "Province": "https://psgc.gitlab.io/api/provinces?regionCode=",
-    "Municipal": "https://psgc.gitlab.io/api/cities?provinceCode=",
-    "Barangay": "https://psgc.gitlab.io/api/barangays?cityCode="
+"contrac_status" : [
+  {
+    "id": 1, 
+    "status": "renewed", 
+    "date": "2012-11-05 "
   }
+]
 }
