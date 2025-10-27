@@ -40,5 +40,30 @@
       "createdDate": "2023-10-01",
       "contractType": "Temporary Burial"
     }
+  ],
+"users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "adminpass",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "staff001",
+      "password": "staffpass101",
+      "role": "employee"
+    },
+    {
+      "id": 3,
+      "username": "staff002",
+      "password": "staffpass100",
+      "role": "employee"
+    }
+  ],
+  "url": [
+    {
+      "login": "/users"
+    }
   ]
 }
