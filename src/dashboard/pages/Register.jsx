@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { addressSchema } from "../schemas/adressSchema";  // This can be TS or JS file, no impact here
+import { addressSchema } from "../schemas/adressSchema"; 
 import { PhilippineAddressDropdownMUI } from "../components/AddressForm";
 import {
   Typography,
@@ -54,12 +54,11 @@ export default function CustomFormMUI() {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container my-0">
       <div
-        className="bg-white p-4 shadow rounded"
+        className="bg-white p-4 shadow rounded fluid"
         style={{
-          width: "900px",
-          maxHeight: "90vh",
+          maxHeight: "85vh",
           overflowY: "auto",
           margin: "0 auto",
         }}
