@@ -21,7 +21,6 @@ import EmployeeControls from './pages/Settings/EmployeeControls';
 import ExpirationNotification from './pages/Settings/ExpirationNotification';
 import LoginLog from './pages/Settings/LoginLog';
 import RenewableRules from './pages/Settings/RenewableRules';
-import RestoreData from './pages/Settings/RestoreData';
 
 const API_URL = 'http://localhost:5000/records';
 
@@ -99,7 +98,6 @@ const Dashboard = () => {
           <Route path="/settings/change-password" element={<ChangePassword />} />
           <Route path="/settings/employee-controls" element={<EmployeeControls />} />
           <Route path="/settings/backup-data" element={<BackupData />} />
-          <Route path="/settings/restore-data" element={<RestoreData />} />
           <Route path="/settings/archive-records" element={<ArchiveRecords />} />
           <Route path="/settings/activity-log" element={<ActivityLog />} />
           <Route path="/settings/login-log" element={<LoginLog />} />

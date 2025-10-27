@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Nav, Collapse } from 'react-bootstrap';
 import { CButton } from '@coreui/react';
 import {
   FaHome, FaUserPlus, FaCog, FaFileAlt, FaLeaf, FaHourglassHalf, FaBan,
   FaCalendarAlt, FaSync, FaBell, FaLock, FaUsersCog, FaDatabase,
-  FaCloudUploadAlt, FaArchive, FaClipboardList, FaLaptopCode,
+  FaArchive, FaClipboardList, FaLaptopCode, FaSignOutAlt,
 } from 'react-icons/fa';
 import '../style/SideBar.css';
 
@@ -28,7 +28,6 @@ const settings = [
   { name: 'Change Password', icon: <FaLock />, path: '/dashboard/settings/change-password' },
   { name: 'Employee Controls', icon: <FaUsersCog />, path: '/dashboard/settings/employee-controls' },
   { name: 'Backup Data', icon: <FaDatabase />, path: '/dashboard/settings/backup-data' },
-  { name: 'Restore Data', icon: <FaCloudUploadAlt />, path: '/dashboard/settings/restore-data' },
   { name: 'Archive Records', icon: <FaArchive />, path: '/dashboard/settings/archive-records' },
   { name: 'Activity Log', icon: <FaClipboardList />, path: '/dashboard/settings/activity-log' },
   { name: 'Login Log', icon: <FaLaptopCode />, path: '/dashboard/settings/login-log' },
@@ -37,13 +36,21 @@ const settings = [
 const SideBar = ({ handle }) => {
   const [openAnalytics, setOpenAnalytics] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // 🔒 Add your logout logic here (e.g., clear token, redirect to login)
+    localStorage.removeItem("authToken");
+    navigate("/login");
+  };
 
   return (
     <div
-      className={`d-flex flex-column overflow-hidden bg-dark text-light`}
+      className={`d-flex flex-column bg-dark text-light`}
       style={{
         width: handle ? '0px' : '240px',
         transition: 'width 0.3s',
+        height: '100vh',
       }}
     >
       {/* Sidebar Header */}
@@ -62,7 +69,8 @@ const SideBar = ({ handle }) => {
             to={path}
             key={name}
             className={({ isActive }) =>
-              `sidebar-link text-white d-flex align-items-center px-3 py-2 overflow-hidden rounded my-1 mx-2 ${isActive ? 'active-link' : ''
+              `sidebar-link text-white d-flex align-items-center px-3 py-2 rounded my-1 mx-2 ${
+                isActive ? 'active-link' : ''
               }`
             }
             style={{
@@ -94,7 +102,8 @@ const SideBar = ({ handle }) => {
                 to={path}
                 key={name}
                 className={({ isActive }) =>
-                  `sidebar-link text-white d-flex align-items-center px-3 py-2 overflow-hidden rounded my-1 mx-2 ${isActive ? 'active-link' : ''
+                  `sidebar-link text-white d-flex align-items-center px-3 py-2 rounded my-1 mx-2 ${
+                    isActive ? 'active-link' : ''
                   }`
                 }
               >
@@ -122,7 +131,8 @@ const SideBar = ({ handle }) => {
                 to={path}
                 key={name}
                 className={({ isActive }) =>
-                  `sidebar-link text-white d-flex align-items-center px-3 py-2 overflow-hidden rounded my-1 mx-2 ${isActive ? 'active-link' : ''
+                  `sidebar-link text-white d-flex align-items-center px-3 py-2 rounded my-1 mx-2 ${
+                    isActive ? 'active-link' : ''
                   }`
                 }
               >
@@ -133,6 +143,18 @@ const SideBar = ({ handle }) => {
           </div>
         </Collapse>
       </Nav>
+
+      {/* LOGOUT BUTTON */}
+      <div className="p-3 border-top border-secondary">
+        <CButton
+          color="danger"
+          className="w-100 d-flex align-items-center justify-content-center"
+          onClick={handleLogout}
+        >
+          <FaSignOutAlt style={{ marginRight: 8 }} />
+          {!handle && <span>Logout</span>}
+        </CButton>
+      </div>
     </div>
   );
 };

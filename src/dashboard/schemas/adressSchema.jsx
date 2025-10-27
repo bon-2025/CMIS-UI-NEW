@@ -15,6 +15,12 @@ export const addressSchema = z.object({
   contactLastName: z.string().min(1, "Contact last name is required"),
   contactGender: z.string().min(1, "Contact gender is required"),
 
+  // New fields for contact person
+  contactNumber: z
+    .string()
+    .regex(/^09\d{9}$/, "Contact number must be a valid 11-digit Philippine number (e.g. 09123456789)"),
+  contactEmail: z.string().email("Invalid email address"),
+
   // Updated to match prefixed contact address fields
   contactAddressRegion: z.string().min(1, "Contact region is required"),
   contactAddressProvince: z.string().min(1, "Contact province is required"),

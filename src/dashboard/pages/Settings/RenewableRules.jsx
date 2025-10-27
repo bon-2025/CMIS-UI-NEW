@@ -9,8 +9,8 @@ import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa'
 const RenewableRules = () => {
   const [rules, setRules] = useState([
     { id: 1, contractType: 'Temporary Burial', renewable: true, feeRequired: true },
-    { id: 2, contractType: 'Niche Rental', renewable: true, feeRequired: false },
-    { id: 3, contractType: 'Perpetual Lot', renewable: false, feeRequired: false },
+    { id: 2, contractType: 'Rental Burial', renewable: true, feeRequired: false },
+    { id: 3, contractType: 'Private Lot', renewable: false, feeRequired: false },
   ])
 
   const [visible, setVisible] = useState(false)

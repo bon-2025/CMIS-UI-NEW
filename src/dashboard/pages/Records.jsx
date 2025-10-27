@@ -9,10 +9,8 @@ const Records = () => {
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const res = await fetch("http://localhost:5000/data");
-        if (!res.ok) {
-          throw new Error("Failed to fetch records");
-        }
+        const res = await fetch("http://localhost:5000/records");
+        if (!res.ok) throw new Error("Failed to fetch records");
         const data = await res.json();
         setRecords(data);
       } catch (err) {
@@ -25,13 +23,8 @@ const Records = () => {
     fetchRecords();
   }, []);
 
-  if (loading) {
-    return <div className="text-center my-5">Loading records...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center text-danger my-5">Error: {error}</div>;
-  }
+  if (loading) return <div className="text-center my-5">Loading records...</div>;
+  if (error) return <div className="text-center text-danger my-5">Error: {error}</div>;
 
   return <RecordsComponents records={records} />;
 };

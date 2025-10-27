@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { addressSchema } from "../schemas/adressSchema"; 
+import { addressSchema } from "../schemas/adressSchema";
 import { PhilippineAddressDropdownMUI } from "../components/AddressForm";
 import {
   Typography,
@@ -9,11 +9,11 @@ import {
   Box,
   Grid,
   TextField,
-  MenuItem
+  MenuItem,
+  Paper,
 } from "@mui/material";
 
 export default function CustomFormMUI() {
-
   const {
     control,
     register,
@@ -38,6 +38,8 @@ export default function CustomFormMUI() {
       contactFirstName: "",
       contactLastName: "",
       contactGender: "",
+      contactNumber: "",
+      contactEmail: "",
       burialPermitNumber: "",
       contractStart: "",
       contractEnd: "",
@@ -46,7 +48,6 @@ export default function CustomFormMUI() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data, null, 2));
-    alert(data)
   };
 
   const onError = (errors) => {
@@ -54,24 +55,42 @@ export default function CustomFormMUI() {
   };
 
   return (
-    <div className="container my-0">
-      <div
-        className="bg-white p-4 shadow rounded fluid"
-        style={{
-          maxHeight: "85vh",
-          overflowY: "auto",
-          margin: "0 auto",
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        minHeight: "100vh",
+        backgroundColor: "#f5f6fa",
+        py: 4,
+      }}
+    >
+      <Paper
+        elevation={6}
+        sx={{
+          width: "100%",
+          maxWidth: 900,
+          p: 5,
+          borderRadius: 3,
+          backgroundColor: "white",
         }}
       >
-        <Typography variant="h5" className="mb-3">
-          Edit Address Form
+        <Typography
+          variant="h5"
+          sx={{ mb: 3, fontWeight: "bold", color: "primary.main" }}
+        >
+          Descendants Form
         </Typography>
 
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           {/* USER INFO */}
-          <Typography variant="h6" className="mt-4">
+          <Typography
+            variant="h6"
+            sx={{ mt: 3, mb: 2, fontWeight: "medium", color: "text.secondary" }}
+          >
             User Information
           </Typography>
+
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -93,7 +112,6 @@ export default function CustomFormMUI() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Controller
-                defaultValue=""
                 name="userGender"
                 control={control}
                 render={({ field }) => (
@@ -104,7 +122,6 @@ export default function CustomFormMUI() {
                     fullWidth
                     error={!!errors.userGender}
                     helperText={errors.userGender?.message}
-                    sx={{ width: 100 }}
                   >
                     <MenuItem value="">Select Gender</MenuItem>
                     <MenuItem value="Male">Male</MenuItem>
@@ -117,21 +134,29 @@ export default function CustomFormMUI() {
           </Grid>
 
           {/* USER ADDRESS */}
-          <Typography variant="h6" className="mt-4">
+          <Typography
+            variant="h6"
+            sx={{ mt: 4, mb: 2, fontWeight: "medium", color: "text.secondary" }}
+          >
             User Address
           </Typography>
+
           <PhilippineAddressDropdownMUI
             register={register}
             setValue={setValue}
             watch={watch}
             errors={errors}
-            namePrefix="userAddress"  // or "contact" for contact address
+            namePrefix="userAddress"
           />
 
           {/* CONTACT PERSON */}
-          <Typography variant="h6" className="mt-4">
+          <Typography
+            variant="h6"
+            sx={{ mt: 4, mb: 2, fontWeight: "medium", color: "text.secondary" }}
+          >
             Contact Person Information
           </Typography>
+
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -153,7 +178,6 @@ export default function CustomFormMUI() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Controller
-                defaultValue=""
                 name="contactGender"
                 control={control}
                 render={({ field }) => (
@@ -164,7 +188,6 @@ export default function CustomFormMUI() {
                     fullWidth
                     error={!!errors.contactGender}
                     helperText={errors.contactGender?.message}
-                    sx={{ width: 100 }}
                   >
                     <MenuItem value="">Select Gender</MenuItem>
                     <MenuItem value="Male">Male</MenuItem>
@@ -174,12 +197,37 @@ export default function CustomFormMUI() {
                 )}
               />
             </Grid>
+
+            {/* ✅ New Fields */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Contact Number"
+                fullWidth
+                {...register("contactNumber")}
+                error={!!errors.contactNumber}
+                helperText={errors.contactNumber?.message}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Contact Email"
+                type="email"
+                fullWidth
+                {...register("contactEmail")}
+                error={!!errors.contactEmail}
+                helperText={errors.contactEmail?.message}
+              />
+            </Grid>
           </Grid>
 
           {/* CONTACT ADDRESS */}
-          <Typography variant="h6" className="mt-4">
+          <Typography
+            variant="h6"
+            sx={{ mt: 4, mb: 2, fontWeight: "medium", color: "text.secondary" }}
+          >
             Contact Address
           </Typography>
+
           <PhilippineAddressDropdownMUI
             register={register}
             setValue={setValue}
@@ -189,9 +237,13 @@ export default function CustomFormMUI() {
           />
 
           {/* OTHER INFO */}
-          <Typography variant="h6" className="mt-4">
+          <Typography
+            variant="h6"
+            sx={{ mt: 4, mb: 2, fontWeight: "medium", color: "text.secondary" }}
+          >
             Other Information
           </Typography>
+
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -221,13 +273,25 @@ export default function CustomFormMUI() {
           </Grid>
 
           {/* SUBMIT */}
-          <Box mt={4}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
+          <Box mt={5} display="flex" justifyContent="center">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{
+                px: 5,
+                py: 1.5,
+                borderRadius: 2,
+                textTransform: "none",
+                fontWeight: "bold",
+              }}
+            >
               Submit
             </Button>
           </Box>
         </form>
-      </div>
-    </div>
+      </Paper>
+    </Box>
   );
 }
