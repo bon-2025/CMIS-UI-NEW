@@ -1,26 +1,33 @@
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { HookForm } from "./hook/HookForm.jsx";
-import { validateUser } from "./service/LoginAuth.jsx";
+import { useFormConfig } from "./hook/useFormConfig.jsx";
+import { ValidateAuth } from "./service/ValidateAuth.jsx";
 import LoginForm from "./Components/LoginForm.jsx";
+import { useAuthContext } from "../shared/components/AuthProvider.jsx";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
+  const { login, isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
-  const form = HookForm;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm(form);
+  const { register, handleSubmit, formState: { errors } } = useForm(useFormConfig);
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await validateUser(data); // call your async validateUser
-      return response; // returned to LoginForm to show modal
-    } catch (err) {
-      console.error("Login error:", err);
-      return { success: false };
+  // Redirect if already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
     }
+  }, [isLoggedIn, navigate]);
+
+  //login submit
+  const onSubmit = async (data) => {
+    const result = await ValidateAuth(data);
+
+    if (result.success) {
+      login(result.user);
+      navigate("/dashboard");
+    }
+
+    return result;
   };
 
   return (

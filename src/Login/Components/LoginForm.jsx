@@ -1,7 +1,5 @@
 import { useState } from "react";
 import InputField from "../../shared/components/InputField.jsx";
-import Checkbox from "../../components/CheckBox.jsx";
-import AnchorTag from "../../components/AnchorTag.jsx";
 import Logo from "./Logo.jsx";
 
 const LoginForm = ({ register, handleSubmit, errors, onSubmit }) => {
@@ -11,10 +9,10 @@ const LoginForm = ({ register, handleSubmit, errors, onSubmit }) => {
   const handleLogin = async (data) => {
     setIsLoading(true);
 
-    const result = await onSubmit(data); // call parent handler
+    const result = await onSubmit(data); // parent handles navigation
 
     if (result?.success) {
-      setModal({ show: true, success: true, message: "Login Successful! Welcome back." });
+      setModal({ show: true, success: true, message: "Login successful!" });
     } else {
       setModal({ show: true, success: false, message: "Invalid username or password." });
     }
@@ -22,11 +20,12 @@ const LoginForm = ({ register, handleSubmit, errors, onSubmit }) => {
     setIsLoading(false);
   };
 
+
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-primary bg-opacity-25">
       <div className="bg-white p-5 rounded-4 shadow-sm" style={{ minWidth: "350px" }}>
-        {/* Logo */}
-        <Logo />
+          {/* Logo */}
+          <Logo />
 
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="mb-3">
@@ -64,13 +63,6 @@ const LoginForm = ({ register, handleSubmit, errors, onSubmit }) => {
             </button>
           </div>
 
-          <div className="d-grid text-center mt-2">
-            <Checkbox label="Remember Me" {...register("remember")} />
-          </div>
-
-          <div className="text-center mt-3">
-            <AnchorTag text="Forgot password?" />
-          </div>
         </form>
       </div>
 

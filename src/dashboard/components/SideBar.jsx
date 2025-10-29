@@ -1,48 +1,27 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useAuthContext } from '../../shared/components/AuthProvider';
+import { menu, analytics, settings } from '../utils/sidebar/nav';
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Nav, Collapse } from 'react-bootstrap';
 import { CButton } from '@coreui/react';
-import {
-  FaHome, FaUserPlus, FaCog, FaFileAlt, FaLeaf, FaHourglassHalf, FaBan,
-  FaCalendarAlt, FaSync, FaBell, FaLock, FaUsersCog, FaDatabase,
-  FaArchive, FaClipboardList, FaLaptopCode, FaSignOutAlt,
-} from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 import '../style/SideBar.css';
 
-const menuItems = [
-  { name: 'Dashboard', icon: <FaHome />, path: '/dashboard/' },
-  { name: 'Records', icon: <FaFileAlt />, path: '/dashboard/records' },
-  { name: 'Register', icon: <FaUserPlus />, path: '/dashboard/register' },
-];
 
-const analytics = [
-  { name: 'Renewable', icon: <FaLeaf />, path: '/dashboard/renewable' },
-  { name: 'Expiring', icon: <FaHourglassHalf />, path: '/dashboard/expiring' },
-  { name: 'Expired', icon: <FaBan />, path: '/dashboard/expired' },
-];
-
-const settings = [
-  { name: 'Contract Duration', icon: <FaCalendarAlt />, path: '/dashboard/settings/contract-duration' },
-  { name: 'Renewable Rules', icon: <FaSync />, path: '/dashboard/settings/renewable-rules' },
-  { name: 'Expiration Notification', icon: <FaBell />, path: '/dashboard/settings/expiration-notification' },
-  { name: 'Change Password', icon: <FaLock />, path: '/dashboard/settings/change-password' },
-  { name: 'Employee Controls', icon: <FaUsersCog />, path: '/dashboard/settings/employee-controls' },
-  { name: 'Backup Data', icon: <FaDatabase />, path: '/dashboard/settings/backup-data' },
-  { name: 'Archive Records', icon: <FaArchive />, path: '/dashboard/settings/archive-records' },
-  { name: 'Activity Log', icon: <FaClipboardList />, path: '/dashboard/settings/activity-log' },
-  { name: 'Login Log', icon: <FaLaptopCode />, path: '/dashboard/settings/login-log' },
-];
 
 const SideBar = ({ handle }) => {
   const [openAnalytics, setOpenAnalytics] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
   const navigate = useNavigate();
 
+  const { user, logout } = useAuthContext();
+  
   const handleLogout = () => {
-    // 🔒 Add your logout logic here (e.g., clear token, redirect to login)
-    localStorage.removeItem("authToken");
-    navigate("/login");
+    logout();
+    navigate("/");
   };
+
 
   return (
     <div
@@ -53,6 +32,8 @@ const SideBar = ({ handle }) => {
         height: '100vh',
       }}
     >
+      <h2>Welcome, {user?.name || "User"}!</h2>
+
       {/* Sidebar Header */}
       <div className="p-3 border-bottom border-secondary">
         <h5 className="fw-bold text-white mb-0">
@@ -63,7 +44,7 @@ const SideBar = ({ handle }) => {
 
       {/* Menu Items */}
       <Nav className="flex-column" style={{ flexGrow: 1 }}>
-        {menuItems.map(({ name, icon, path }) => (
+        {menu.map(({ name, icon, path }) => (
           <Nav.Link
             as={NavLink}
             to={path}

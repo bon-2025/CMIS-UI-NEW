@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+
 import SideBar from './components/SideBar';
 import Home from './pages/Home';
 import Records from './pages/Records';
@@ -70,6 +72,7 @@ const Dashboard = () => {
   if (loading) {
     return <div className="text-center p-5">Loading records...</div>;
   }
+
 
   return (
     <div className="d-flex vh-100">
