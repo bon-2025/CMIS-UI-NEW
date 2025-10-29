@@ -8,6 +8,6 @@
 
 .nav-link:focus {
   outline: none;
-  background-color: #2563eb;
+   background-color: #374151;
   color: white;
 }

@@ -1,6 +1,6 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 
-const RegisterForm = ({ header, handleSubmit, children}) => {
+const RegisterForm = ({ header, onSubmit, children}) => {
     
 
     return (
@@ -13,7 +13,7 @@ const RegisterForm = ({ header, handleSubmit, children}) => {
         }}
         >
             <h2 className="mb-4 text-center">{ header }</h2>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={onSubmit}>
                 <Row className="mb-3">
                     {children}
                 </Row>
