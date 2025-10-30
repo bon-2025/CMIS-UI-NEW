@@ -1,12 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
-
-import SideBar from './components/SideBar';
+import SideBar from '../shared/components/Sidebar/Sidebar';
 import Home from './pages/Home';
-import Records from './pages/Records';
-import Register from './pages/Register';
-import Header from './components/Header';
+import Records from './pages/Menu/Records';
+import Register from './pages/Menu/Register';
 
 // Analytics Pages
 import Renewable from "./pages/Analytics/Renewable";
@@ -24,70 +21,17 @@ import ExpirationNotification from './pages/Settings/ExpirationNotification';
 import LoginLog from './pages/Settings/LoginLog';
 import RenewableRules from './pages/Settings/RenewableRules';
 
-const API_URL = 'http://localhost:5000/records';
-
 const Dashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const [records, setRecords] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchRecords = async () => {
-      try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('Failed to fetch records');
-        const data = await res.json();
-        if (isMounted) {
-          setRecords(data);
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error('Failed to fetch records:', error);
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchRecords();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  const handleFormSubmit = async (newRecord) => {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newRecord),
-    });
-
-    if (!response.ok) throw new Error('Failed to save record');
-
-    const savedRecord = await response.json();
-    setRecords(prev => [...prev, savedRecord]);
-    return savedRecord;
-  };
-
-  if (loading) {
-    return <div className="text-center p-5">Loading records...</div>;
-  }
-
-
   return (
     <div className="d-flex vh-100">
-      <SideBar handle={collapsed} />
-
-      <div className="flex-grow-1 p-0" style={{ backgroundColor: '#e6f0fa' }}>
-        <Header handleChange={() => setCollapsed(!collapsed)} />
-      </div>
+      <SideBar />
 
       <div className="container-fluid p-4 overflow-y-auto" style={{ backgroundColor: '#e6f0fa' }}>
         <Routes>
           {/* Main Pages */}
-          <Route path="/" element={<Home records={records} />} />
-          <Route path="/records" element={<Records records={records} />} />
-          <Route path="/register" element={<Register onSubmit={handleFormSubmit} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/records" element={<Records />} />
+          <Route path="/register" element={<Register />} />
 
           {/* Analytics Pages */}
           <Route path="/renewable" element={<Renewable />} />

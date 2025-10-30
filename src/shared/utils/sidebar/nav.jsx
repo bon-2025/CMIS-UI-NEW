@@ -17,13 +17,17 @@ export const analytics = [
   { name: 'Expired', icon: <FaBan />, path: '/dashboard/expired' },
 ];
 
-export const settings = [
+// Split settings
+export const settingsGeneral = [
   { name: 'Contract Duration', icon: <FaCalendarAlt />, path: '/dashboard/settings/contract-duration' },
   { name: 'Renewable Rules', icon: <FaSync />, path: '/dashboard/settings/renewable-rules' },
   { name: 'Expiration Notification', icon: <FaBell />, path: '/dashboard/settings/expiration-notification' },
   { name: 'Change Password', icon: <FaLock />, path: '/dashboard/settings/change-password' },
   { name: 'Employee Controls', icon: <FaUsersCog />, path: '/dashboard/settings/employee-controls' },
   { name: 'Backup Data', icon: <FaDatabase />, path: '/dashboard/settings/backup-data' },
+];
+
+export const settingsLogs = [
   { name: 'Archive Records', icon: <FaArchive />, path: '/dashboard/settings/archive-records' },
   { name: 'Activity Log', icon: <FaClipboardList />, path: '/dashboard/settings/activity-log' },
   { name: 'Login Log', icon: <FaLaptopCode />, path: '/dashboard/settings/login-log' },

@@ -8,9 +8,8 @@ import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa'
 
 const ContractDuration = () => {
   const [durations, setDurations] = useState([
-    { id: 1, name: 'Temporary Burial', duration: '5 Years', isPermanent: false },
-    { id: 2, name: 'Rental Burial', duration: '10 Years', isPermanent: false },
-    { id: 3, name: 'Private Lot', duration: 'Permanent', isPermanent: true },
+    { id: 1, name: 'Rental Burial', duration: '10 Years', isPermanent: false },
+    { id: 2, name: 'Private Lot', duration: 'Permanent', isPermanent: true },
   ])
 
   const [visible, setVisible] = useState(false)

@@ -11,7 +11,7 @@ export const getAsync = async (url) => {
 };
 
 
-// export const getAsync = (url) => server.get(url).then(res => res.data);
+//export const getAsync = (url) => server.get(url).then(res => res.data);
 // export const postAsync = (url, data) => server.post(url, data).then(res => res.data);
 // export const putAsync = (url, data) => server.put(url, data).then(res => res.data);
 // export const deleteAsync = (url) => server.delete(url).then(res => res.data);
