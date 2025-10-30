@@ -2,7 +2,7 @@
 import { Table, Button } from "react-bootstrap";
 import { useState } from "react";
 import { formatDate } from "../../utils/Record/recordsUtils";
-import RecordsModal from "../records/RecordsModal";
+import RecordsModal from "./RecordsModal";
 
 export default function RecordsTable({ records, handleArchive, handleExtend }) {
   const [modalInfo, setModalInfo] = useState({ show: false, action: "", record: null });
