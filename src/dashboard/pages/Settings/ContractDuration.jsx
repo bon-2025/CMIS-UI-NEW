@@ -1,67 +1,23 @@
-import React, { useState } from 'react'
-import {
-  CCard, CCardBody, CCardTitle, CButton, CForm, CFormInput, CTable,
-  CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell,
-  CModal, CModalBody, CModalHeader, CModalTitle, CModalFooter, CFormCheck
-} from '@coreui/react'
+// src/pages/ContractDuration.jsx
+import React from 'react'
+import { CCard, CCardBody, CCardTitle, CButton, CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell } from '@coreui/react'
 import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa'
+import { useContractDuration } from '../../hook/Settings/useContractDuration'
+import { ContractForm } from '../../components/Settings/ContractDuration/ContractForm'
 
 const ContractDuration = () => {
-  const [durations, setDurations] = useState([
-    { id: 1, name: 'Rental Burial', duration: '10 Years', isPermanent: false },
-    { id: 2, name: 'Private Lot', duration: 'Permanent', isPermanent: true },
-  ])
-
-  const [visible, setVisible] = useState(false)
-  const [editing, setEditing] = useState(null)
-  const [formData, setFormData] = useState({ name: '', duration: '', isPermanent: false })
-
-  // Handle input change
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-  }
-
-  // Handle Permanent Toggle
-  const handlePermanentChange = (e) => {
-    const checked = e.target.checked
-    setFormData({
-      ...formData,
-      isPermanent: checked,
-      duration: checked ? 'Permanent' : ''
-    })
-  }
-
-  // Handle Add or Update
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (editing) {
-      setDurations(durations.map(d => (d.id === editing.id ? { ...d, ...formData } : d)))
-    } else {
-      setDurations([...durations, { id: Date.now(), ...formData }])
-    }
-    setVisible(false)
-    setEditing(null)
-    setFormData({ name: '', duration: '', isPermanent: false })
-  }
-
-  // Handle Edit
-  const handleEdit = (item) => {
-    setEditing(item)
-    setFormData({
-      name: item.name,
-      duration: item.isPermanent ? 'Permanent' : item.duration,
-      isPermanent: item.isPermanent
-    })
-    setVisible(true)
-  }
-
-  // Handle Delete
-  const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this contract duration?')) {
-      setDurations(durations.filter(d => d.id !== id))
-    }
-  }
+  const {
+    durations,
+    visible,
+    formData,
+    editing,
+    setVisible,
+    handleChange,
+    handlePermanentChange,
+    handleSubmit,
+    handleEdit,
+    handleDelete,
+  } = useContractDuration()
 
   return (
     <div className="p-4 bg-light flui">
@@ -116,56 +72,15 @@ const ContractDuration = () => {
         </CCardBody>
       </CCard>
 
-      {/* Modal for Add/Edit */}
-      <CModal visible={visible} onClose={() => setVisible(false)} alignment="center">
-        <CModalHeader>
-          <CModalTitle>{editing ? 'Edit Contract Duration' : 'Add Contract Duration'}</CModalTitle>
-        </CModalHeader>
-        <CModalBody>
-          <CForm onSubmit={handleSubmit}>
-            <CFormInput
-              className="mb-3"
-              type="text"
-              label="Contract Type Name"
-              placeholder="e.g., Temporary Burial"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-
-            <CFormCheck
-              className="mb-3"
-              label="Permanent (No Expiration)"
-              checked={formData.isPermanent}
-              onChange={handlePermanentChange}
-            />
-
-            {!formData.isPermanent && (
-              <CFormInput
-                className="mb-3"
-                type="text"
-                label="Duration"
-                placeholder="e.g., 5 Years, 10 Years"
-                name="duration"
-                value={formData.duration}
-                onChange={handleChange}
-                required
-              />
-            )}
-
-            <div className="text-end">
-              <CButton color="secondary" className="me-2" onClick={() => setVisible(false)}>
-                Cancel
-              </CButton>
-              <CButton color="primary" type="submit">
-                {editing ? 'Update' : 'Add'}
-              </CButton>
-            </div>
-          </CForm>
-        </CModalBody>
-        <CModalFooter></CModalFooter>
-      </CModal>
+      <ContractForm
+        visible={visible}
+        setVisible={setVisible}
+        editing={editing}
+        formData={formData}
+        handleChange={handleChange}
+        handlePermanentChange={handlePermanentChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   )
 }

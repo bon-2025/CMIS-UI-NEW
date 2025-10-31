@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import SideBar from '../shared/components/Sidebar/Sidebar';
-import Home from './pages/Home';
+import Home from './pages/Menu/Home';
 import Records from './pages/Menu/Records';
 import Register from './pages/Menu/Register';
 
@@ -10,15 +10,16 @@ import Renewable from "./pages/Analytics/Renewable";
 import Expiring from './pages/Analytics/Expiring';
 import Expired from './pages/Analytics/Expired';
 
-// Settings Pages
-import ActivityLog from './pages/Settings/ActivityLog';
-import ArchiveRecords from './pages/Settings/ArchiveRecords';
+// Logs Pages
+import ActivityLog from './pages/Log/ActivityLog';
+import ArchiveRecords from './pages/Log/ArchiveRecords';
+
 import BackupData from './pages/Settings/BackupData';
 import ChangePassword from './pages/Settings/ChangePassword';
 import ContractDuration from './pages/Settings/ContractDuration';
 import EmployeeControls from './pages/Settings/EmployeeControls';
 import ExpirationNotification from './pages/Settings/ExpirationNotification';
-import LoginLog from './pages/Settings/LoginLog';
+import LoginLog from './pages/Log/LoginLog';
 import RenewableRules from './pages/Settings/RenewableRules';
 
 const Dashboard = () => {
